@@ -7,6 +7,127 @@
 		"abi": [
 			{
 				"inputs": [],
+				"name": "Aarti",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "favNo",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMale",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "Ajay",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "favNo",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMale",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "Friends",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "favNo",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMale",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "Vijay",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "favNo",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isMale",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_numb",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_male",
+						"type": "bool"
+					}
+				],
+				"name": "addPerson",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "favoriteNumber",
 				"outputs": [
 					{
@@ -86,11 +207,11 @@
 	},
 	"sources": {
 		"SimpleStorage.sol": {
-			"keccak256": "0xfa2ed460b67b53f9d3fed67e1d7e79dbde6530973f5a4cdcece97c57cef7e579",
+			"keccak256": "0x217158409b9b21e02b8ac2abc7a386bd1222f43b2770fb25886b0d4f48bb44f0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c6e2cf6f0f6c586b31a1ef6bfd48ce525c1d91bd562a61984e2c540f08a44225",
-				"dweb:/ipfs/QmdoTCKkXVyXMFxiyBh6B8ZqKiw8DaQxY5pKVbfTkM7f7H"
+				"bzz-raw://c5b3bfad5d922e856945415b476abbf5e9de9b9ce2e099d66fb3c9abf6769996",
+				"dweb:/ipfs/QmYsahLb9oPqUVy8umj1YSD4AxRtwywbq9k7QHbjVuULgJ"
 			]
 		}
 	},

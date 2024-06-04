@@ -18,4 +18,29 @@ contract SimpleStorage
     {
         return 7;
     }
+
+    struct Person
+    {
+        string name;
+        uint favNo;
+        bool isMale;
+    }
+
+    Person public Ajay = Person("Ajay", 21, true);
+    Person public Vijay = Person({name: "Vijay", favNo: 7, isMale: true});
+    Person public Aarti = Person("Pooja", 11, false);
+
+    Person[] public Friends;
+    function addPerson(string memory _name, uint256 _numb, bool _male) public
+    {
+        // Friends.push(Person(_name,_numb,_male));
+        // OR
+        Person memory newPerson = Person(_name, _numb, _male);
+        Friends.push(newPerson);
+        // -------------------------------------
+        Friends.push(Ajay);
+        Friends.push(Vijay);
+        Friends.push(Aarti);
+    }
+    
 }
