@@ -42,5 +42,11 @@ contract SimpleStorage
         Friends.push(Vijay);
         Friends.push(Aarti);
     }
+
+    mapping (string=>uint256) public NameToNumber;
+    function GiveNameToNumber(string memory _name, uint256 _number) public
+    {
+        NameToNumber[_name]=_number;
+    }
     
 }

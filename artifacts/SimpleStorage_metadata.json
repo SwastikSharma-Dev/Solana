@@ -81,6 +81,43 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_number",
+						"type": "uint256"
+					}
+				],
+				"name": "GiveNameToNumber",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "NameToNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "Vijay",
 				"outputs": [
@@ -207,11 +244,11 @@
 	},
 	"sources": {
 		"SimpleStorage.sol": {
-			"keccak256": "0x217158409b9b21e02b8ac2abc7a386bd1222f43b2770fb25886b0d4f48bb44f0",
+			"keccak256": "0x0d4ef125bd3e2920dae328391d07d696b06025e77fb1315f083f5545bff9de41",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c5b3bfad5d922e856945415b476abbf5e9de9b9ce2e099d66fb3c9abf6769996",
-				"dweb:/ipfs/QmYsahLb9oPqUVy8umj1YSD4AxRtwywbq9k7QHbjVuULgJ"
+				"bzz-raw://772f4d2a0225c885d047acbf83406fc2107ae20451832c2d7f51f8e65744a1b9",
+				"dweb:/ipfs/QmUSKquxmjej1W9vXQHxMPz2yAduGCnjGhtsyt3Ss4GDMe"
 			]
 		}
 	},
