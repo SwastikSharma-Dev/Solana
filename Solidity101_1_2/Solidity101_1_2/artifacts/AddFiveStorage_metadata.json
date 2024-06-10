@@ -242,7 +242,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"addFiveStorage.sol": "AddFiveStorage"
+			"Solidity101_1_2/addFiveStorage.sol": "AddFiveStorage"
 		},
 		"evmVersion": "cancun",
 		"libraries": {},
@@ -256,7 +256,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"SimpleStorage.sol": {
+		"Solidity101_1_2/SimpleStorage.sol": {
 			"keccak256": "0xeaf91db16046cb0bde28631e2a3fba5405fdd769ae455a8676f11f294c310b26",
 			"license": "MIT",
 			"urls": [
@@ -264,7 +264,7 @@
 				"dweb:/ipfs/QmVsqoENLUgxCrA16W2azRSLb2tQ125XCzZH45px1S7ePZ"
 			]
 		},
-		"addFiveStorage.sol": {
+		"Solidity101_1_2/addFiveStorage.sol": {
 			"keccak256": "0x0531a235499dede0ac39941e8e35a5734c7ceca2ad6cd38088c39f077f291ab0",
 			"license": "MIT",
 			"urls": [
