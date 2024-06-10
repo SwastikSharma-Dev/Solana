@@ -9,7 +9,7 @@ contract SimpleStorage
         jaadu();
     }
 
-    function retrieve() public view returns(uint256)
+    function retrieve() public view virtual returns(uint256)
     {
         return favoriteNumber; 
     }
