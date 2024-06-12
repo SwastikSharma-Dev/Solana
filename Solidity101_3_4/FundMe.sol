@@ -25,6 +25,17 @@ contract FundMe
       //  require(msg.value >= 1e18, "You need to send more than 1 ETH, which you haven't."); // 1e18 Wei = 1*10**18 Wei = 1000000000000000000 Wei = 1ETH
       require(msg.value.getConversionRates()>=minUSD, " You didn't sent enough ETH. ");
       funders.push(msg.sender);
-      valueSent[msg.sender]=msg.value+valueSent[msg.sender]; //Earlier funded data need to be added as well
+      valueSent[msg.sender]+=msg.value; //Earlier funded data need to be added as well
+    }
+
+    function withdraw() public
+    {
+      for(uint i=0; i<funders.length; i++)
+      {
+        address addOfFunders = funders[i];
+        valueSent[addOfFunders]=0;
+      }
+      funders=new address[](0);
+      //Resets the array funders to new address array staring from address 0
     }
 }
