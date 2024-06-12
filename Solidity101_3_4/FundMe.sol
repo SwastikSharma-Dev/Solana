@@ -13,6 +13,9 @@ This Project:
 
 import {priceConverter} from "./PriceConverter.sol";
 
+error notOwner();
+error lessAmount();
+
 contract FundMe
 {
   using priceConverter for uint256;
@@ -23,8 +26,9 @@ contract FundMe
 
     function fund() public payable
     {
-      //  require(msg.value >= 1e18, "You need to send more than 1 ETH, which you haven't."); // 1e18 Wei = 1*10**18 Wei = 1000000000000000000 Wei = 1ETH
-      require(msg.value.getConversionRates()>=MIN_USD, " You didn't sent enough ETH. ");
+      // require(msg.value >= 1e18, "You need to send more than 1 ETH, which you haven't."); // 1e18 Wei = 1*10**18 Wei = 1000000000000000000 Wei = 1ETH
+      // require(msg.value.getConversionRates()>=MIN_USD, " You didn't sent enough ETH. ");
+      if(msg.value.getConversionRates()<MIN_USD){revert lessAmount();}
       funders.push(msg.sender);
       valueSent[msg.sender]+=msg.value; //Earlier funded data need to be added as well
     }
@@ -87,8 +91,12 @@ contract FundMe
 
     modifier onlyOwner() //no need to declare visibility as done in functions
     {
-      //require(msg.sender==address(this), "Only owner can Withdraw");
-      require(msg.sender==i_owner, "Only owner can Withdraw");
+      // //require(msg.sender==address(this), "Only owner can Withdraw");
+      // require(msg.sender==i_owner, "Only owner can Withdraw");
+      if(msg.sender!=i_owner)
+      {
+        revert notOwner();
+      }
       _; //Do whatever function wants to.
     }
 }
