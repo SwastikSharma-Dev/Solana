@@ -45,11 +45,8 @@ contract FundMe
       owner=msg.sender;
     }
 
-
-    function withdraw() public
+    function withdraw() onlyOwner public
     {
-      //require(msg.sender==address(this), "Only owner can Withdraw");
-      require(msg.sender==owner, "Only owner can Withdraw");
       for(uint i=0; i<funders.length; i++)
       {
         address addOfFunders = funders[i];
@@ -79,5 +76,19 @@ contract FundMe
       // MOST RECOMMENDED WAY
       (bool callSuccess, )=payable(msg.sender).call{value: address(this).balance}("");
       require(callSuccess, "Call Failed");
+    }
+
+
+
+    // Modifiers are used to save time in writing same line of code and conditions in execution of different functions.
+    // We just declare the condition (here Owner Condition) inside this and we now need not to write it in every function.
+    // Now we just need to write Modifier name in function declaration next to its visbility.
+    //Whenever that function is callled, first modifier runs and then function.
+
+    modifier onlyOwner() //no need to declare visibility as done in functions
+    {
+      //require(msg.sender==address(this), "Only owner can Withdraw");
+      require(msg.sender==owner, "Only owner can Withdraw");
+      _; //Do whatever function wants to.
     }
 }
