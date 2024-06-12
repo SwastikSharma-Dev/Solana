@@ -19,6 +19,7 @@ contract FundMe
     uint public minUSD = 5e18;
     address[] public funders;
     mapping(address funder =>uint amountFunded) public valueSent;
+    address public owner;
 
     function fund() public payable
     {
@@ -34,10 +35,21 @@ contract FundMe
        https://solidity-by-example.org/sending-ether/
     */
 
-    // We do not want anyone to call withdraw function and take away all the money.'
+    // We do not want anyone to call withdraw function and take away all the money.
     // It need to be called by only its owner. fund() may be called by anyone; no problem
+    // So we can use a fn to keep a check on it and it should be called immediately on withdraw execution. So instead, we can simply use CONSTRUCTOR
+    // 'constructor' keyword is used to make a constructor. It is immediately called on contract deployment not on transaction.
+
+    constructor()
+    {
+      owner=msg.sender;
+    }
+
+
     function withdraw() public
     {
+      //require(msg.sender==address(this), "Only owner can Withdraw");
+      require(msg.sender==owner, "Only owner can Withdraw");
       for(uint i=0; i<funders.length; i++)
       {
         address addOfFunders = funders[i];
