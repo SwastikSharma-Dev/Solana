@@ -28,6 +28,14 @@ contract FundMe
       valueSent[msg.sender]+=msg.value; //Earlier funded data need to be added as well
     }
 
+    /* 
+       There are three diffrent ways: 1.send 2.transfer 3. call
+       to send an amount from a contract to a wallet or another contract
+       https://solidity-by-example.org/sending-ether/
+    */
+
+    // We do not want anyone to call withdraw function and take away all the money.'
+    // It need to be called by only its owner. fund() may be called by anyone; no problem
     function withdraw() public
     {
       for(uint i=0; i<funders.length; i++)
@@ -37,5 +45,27 @@ contract FundMe
       }
       funders=new address[](0);
       //Resets the array funders to new address array staring from address 0
+
+      // /* 
+      // Easiest way is to use transfer.
+      // We will need to type cast msg.sender which is address type to payable type
+      // .transfer will get parameter of amount to be transfered which is given as the balance of this current contract by using address(this) to get address of this current contract and .balance utility to get its balance
+      // */
+      // payable(msg.sender).transfer(address(this).balance);
+      // //--------------------------------------------------------------
+
+
+      // // .send returns its success as bool
+      // bool sentSuccess=payable(msg.sender).send(address(this).balance);
+      // require(sentSuccess, "Sending Failed");
+      // //---------------------------------------------------------------
+
+
+      // .call returns two variables (bool //callSuccess,bytes //ReceivedData)
+      // .call is a low level implemention and has no gas fee restriction which is 2300 is above two methods
+      // bytes must be a memory varibale 
+      // MOST RECOMMENDED WAY
+      (bool callSuccess, )=payable(msg.sender).call{value: address(this).balance}("");
+      require(callSuccess, "Call Failed");
     }
 }
