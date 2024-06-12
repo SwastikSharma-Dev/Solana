@@ -99,4 +99,14 @@ contract FundMe
       }
       _; //Do whatever function wants to.
     }
+
+    receive() external payable
+    {
+      fund();
+    }
+
+    fallback() external payable
+    {
+      fund();
+    }
 }
