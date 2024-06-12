@@ -16,15 +16,15 @@ import {priceConverter} from "./PriceConverter.sol";
 contract FundMe
 {
   using priceConverter for uint256;
-    uint public minUSD = 5e18;
+    uint public constant MIN_USD = 5e18;
     address[] public funders;
     mapping(address funder =>uint amountFunded) public valueSent;
-    address public owner;
+    address public immutable i_owner; // The deploying account of the wallet
 
     function fund() public payable
     {
       //  require(msg.value >= 1e18, "You need to send more than 1 ETH, which you haven't."); // 1e18 Wei = 1*10**18 Wei = 1000000000000000000 Wei = 1ETH
-      require(msg.value.getConversionRates()>=minUSD, " You didn't sent enough ETH. ");
+      require(msg.value.getConversionRates()>=MIN_USD, " You didn't sent enough ETH. ");
       funders.push(msg.sender);
       valueSent[msg.sender]+=msg.value; //Earlier funded data need to be added as well
     }
@@ -42,7 +42,7 @@ contract FundMe
 
     constructor()
     {
-      owner=msg.sender;
+      i_owner=msg.sender;
     }
 
     function withdraw() onlyOwner public
@@ -88,7 +88,7 @@ contract FundMe
     modifier onlyOwner() //no need to declare visibility as done in functions
     {
       //require(msg.sender==address(this), "Only owner can Withdraw");
-      require(msg.sender==owner, "Only owner can Withdraw");
+      require(msg.sender==i_owner, "Only owner can Withdraw");
       _; //Do whatever function wants to.
     }
 }
