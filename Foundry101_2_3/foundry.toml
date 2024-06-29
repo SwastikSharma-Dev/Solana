@@ -4,3 +4,4 @@ out = "out"
 libs = ["lib"]
 remappings = ["@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts"]
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+ffi = true # We can run Bash Scripts as well form Foundry. This is needed to be turned ON for that. for Security, it is generally turned OFF.

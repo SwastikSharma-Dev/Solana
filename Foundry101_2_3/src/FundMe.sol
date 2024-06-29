@@ -53,6 +53,28 @@ contract FundMe
       s_priceFeed=AggregatorV3Interface(priceFeed);
     }
 
+    function cheaperWithdraw() public onlyOwner
+    {
+
+        // It is 33x times efficient to Store or Read from Memory(MLOAD and MSTORE : 3) rather than Storage(SLOAD and SSTORE : 100)
+
+      uint256 fundersLength=s_funders.length;
+
+      for(uint i=0; i<fundersLength; i++)
+      {
+        address addOfFunders = s_funders[i];
+        s_valueSent[addOfFunders]=0;
+      }
+      s_funders=new address[](0);
+
+      (bool callSuccess, )=payable(msg.sender).call{value: address(this).balance}("");
+      require(callSuccess, "Call Failed");
+      
+    }
+
+
+
+
     function withdraw() onlyOwner public
     {
       for(uint i=0; i<s_funders.length; i++)
